@@ -1,0 +1,19 @@
+.users-box {
+    margin: 10px;
+}
+
+.posts-btn {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:20px;
+}
+
+.posts-btn button {
+    width: 100px;
+    height: 40px;
+    background: crimson;
+    border: none;
+}

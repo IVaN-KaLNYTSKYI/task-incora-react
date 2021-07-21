@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Users from "./components/users.component/Users";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Header from "./components/header.component/Header";
+import Posts from "./components/posts.component/Posts";
+import PostsUserId from "./components/postUserId.component/PostsUserId";
+import Comments from "./components/comments.component/Comments";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Router>
+                <Header/>
+                <Switch>
+                    <Route exact path={"/users"} render={() => {
+                        return <Users/>
+                    }}/>
+                    <Route exact path={"/posts"} render={() => {
+                        return <Posts/>
+                    }}/>
+                    <Route exact path={"/posts/:id"} render={({match: {params: {id}}}) => {
+                        return <PostsUserId id={id}/>
+                    }}/>
+                    <Route exact path={"/post/:id"} render={({match: {params: {id}}}) => {
+                        return <Comments id={id}/>
+                    }}/>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
